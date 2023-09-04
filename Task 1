@@ -1,0 +1,34 @@
+import random
+
+# Define a list of predefined user queries and their corresponding responses
+responses = {
+    "hello": ["Hello!", "Hi there!", "Hey!"],
+    "how are you": ["I'm just a chatbot, but thanks for asking!", "I don't have feelings, but I'm here to help!"],
+    "what's your name": ["I'm just a simple chatbot.", "You can call me ChatGPT."],
+    "goodbye": ["Goodbye!", "See you later!", "Have a great day!"],
+    "default": ["I'm sorry, I don't understand.", "Could you please rephrase that?", "I'm not sure what you mean."],
+}
+
+# Function to get a response based on user input
+def get_response(user_input):
+    user_input = user_input.lower()  # Convert user input to lowercase for case-insensitive matching
+    
+    # Check if the user's input matches any predefined queries
+    for key in responses:
+        if key in user_input:
+            return random.choice(responses[key])
+    
+    # If no match is found, return a default response
+    return random.choice(responses["default"])
+
+# Main loop to handle user interactions
+print("Hello! I'm your simple chatbot. Type 'exit' to end the conversation.")
+while True:
+    user_input = input("You: ")
+    
+    if user_input.lower() == 'exit':
+        print("Chatbot: Goodbye!")
+        break
+    
+    response = get_response(user_input)
+    print("Chatbot:", response)
